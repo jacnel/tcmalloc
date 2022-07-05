@@ -46,7 +46,7 @@ ABSL_CONST_INIT absl::base_internal::SpinLock pageheap_lock(
     absl::kConstInit, absl::base_internal::SCHEDULE_KERNEL_ONLY);
 ABSL_CONST_INIT Arena Static::arena_;
 ABSL_CONST_INIT SizeMap ABSL_CACHELINE_ALIGNED Static::sizemap_;
-ABSL_CONST_INIT TCMALLOC_ATTRIBUTE_NO_DESTROY TransferCacheManager
+TCMALLOC_ATTRIBUTE_NO_DESTROY ABSL_CONST_INIT TransferCacheManager
     Static::transfer_cache_;
 ABSL_CONST_INIT ShardedTransferCacheManager
     Static::sharded_transfer_cache_(nullptr, nullptr);
@@ -85,9 +85,9 @@ size_t Static::metadata_bytes() {
       sizeof(threadcache_allocator_) + sizeof(sampled_allocation_recorder_) +
       sizeof(bucket_allocator_) + sizeof(inited_) + sizeof(cpu_cache_active_) +
       sizeof(page_allocator_) + sizeof(pagemap_) +
-      sizeof(sampled_objects_size_) +
-      sizeof(peak_heap_tracker_) + sizeof(guarded_page_lock) +
-      sizeof(guardedpage_allocator_) + sizeof(numa_topology_);
+      sizeof(sampled_objects_size_) + sizeof(peak_heap_tracker_) +
+      sizeof(guarded_page_lock) + sizeof(guardedpage_allocator_) +
+      sizeof(numa_topology_);
   // LINT.ThenChange(:static_vars)
 
   const size_t allocated = arena().stats().bytes_allocated +

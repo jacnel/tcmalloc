@@ -175,10 +175,10 @@ class Static {
 
   static bool ABSL_ATTRIBUTE_ALWAYS_INLINE IsOnFastPath() {
     return
-        // These boolean operations do not require short-circuiting from &&.
-        // Bitwise AND of booleans triggers -Wbitwise-instead-of-logical, as
-        // this can be a common source of bugs.  Suppress this by casting to
-        // int first.
+    // These boolean operations do not require short-circuiting from &&.
+    // Bitwise AND of booleans triggers -Wbitwise-instead-of-logical, as
+    // this can be a common source of bugs.  Suppress this by casting to
+    // int first.
 
 #ifndef TCMALLOC_DEPRECATED_PERTHREAD
         // When the per-cpu cache is enabled, and the thread's current cpu
@@ -214,7 +214,7 @@ class Static {
 
   ABSL_CONST_INIT static Arena arena_;
   static SizeMap sizemap_;
-  ABSL_CONST_INIT TCMALLOC_ATTRIBUTE_NO_DESTROY static TransferCacheManager
+  TCMALLOC_ATTRIBUTE_NO_DESTROY ABSL_CONST_INIT static TransferCacheManager
       transfer_cache_;
   ABSL_CONST_INIT static ShardedTransferCacheManager sharded_transfer_cache_;
   static CpuCache cpu_cache_;
